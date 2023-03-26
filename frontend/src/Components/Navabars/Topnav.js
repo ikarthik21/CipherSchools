@@ -6,6 +6,7 @@ import { BsSearch } from 'react-icons/bs';
 import { MdNotificationsNone } from 'react-icons/md'
 import { AiOutlineCompass } from 'react-icons/ai'
 import '../../App.css'
+ 
 const Topnav = () => {
     return (
 
@@ -63,6 +64,14 @@ export default Topnav
 
 const Nav = styled.div`
 padding : 10px 10px;
+position:fixed;
+top: 0px;
+left:0px;
+ width:98vw;
+ z-index:3;
+ background-color:white;
+
+ 
 `
 const NavComp1 = styled.div`
 flex:1;
@@ -122,7 +131,7 @@ display :flex;
 align-items:center;
 justify-contnent :center;
 flex:1;
-margin : 0px 8px;
+margin : 0px 30px;
 
 `
 
@@ -158,3 +167,4 @@ text-decoration :none;
 color:black;
 
 `
+
