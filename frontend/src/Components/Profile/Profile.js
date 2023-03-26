@@ -1,16 +1,116 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { RxLinkedinLogo } from 'react-icons/rx'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 import { BsFacebook } from 'react-icons/bs'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FiGlobe } from 'react-icons/fi'
+import { HiPencil } from 'react-icons/hi'
+import { GrClose } from 'react-icons/gr'
+ 
+import FormCont from '../FormBox/FormCont'
+import { AboutHead, AboutSec, BottomActionBar, Container, DetailsBox, EditOp, FollowersBox, FormBox, Imagebox, InpBox, LogoBox, ProfileBox, ProfileUpdate, UserBox, WebFormSec, WebItem, WebOptions } from '../Styles/Style'
+
+
+function EditProf({ onClose, children }) {
+    return (
+        <>
+            <div className='formDivstyle'>
+         
+                <div className='formInnerBoxstyle'>
+                    <div style={{float:'right'}}> 
+                    
+                    <GrClose style={{cursor:'pointer'}} onClick={onClose} size={25}/>
+                    </div>
+                    {children}
+                    <BottomActionBar>
+                        <button className='btn-styleDark' onClick={onClose}>Cancel</button>
+                        <button className='btn-style' >Save</button>
+                    </BottomActionBar>
+
+
+                </div>
+            </div>
+        </>
+    );
+}
+
+
+
 const Profile = () => {
+    const [file, setFile] = useState(null);
+    const [showEditProf, setShowEditProf] = useState(false);
+
+    const handleButtonClick = () => {
+        setShowEditProf(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowEditProf(false);
+    };
+
+    const handleFileChange = (event) => {
+        setFile(event.target.files[0]);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('profile-pic', file);
+
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    };
+
     return (
         <div className='applyFlexspec'>
+
+
+            <ProfileUpdate>
+                {
+                    showEditProf
+                    && (
+
+                        <EditProf onClose={handleCloseModal}>
+
+                            <FormBox>
+                                <Imagebox className='applyFlex'>
+                                    <form onSubmit={handleSubmit}>
+                                        <input type="file" name="profile-pic" onChange={handleFileChange} />
+
+                                    </form>
+                                    <img src="" alt="No img" />
+                                </Imagebox>
+
+                                <FormCont />
+
+                            </FormBox>
+                        </EditProf>
+                    )
+                }
+
+
+
+
+            </ProfileUpdate>
+
+
             <ProfileBox  >
-                <LogoBox>
+                <LogoBox onClick={handleButtonClick}>
                     <img src="" alt="" />
+                    <EditOp className='applyFlex'>
+
+
+                        <HiPencil size={18} color="white" />
+                    </EditOp >
+
+
                 </LogoBox>
                 <UserBox>
                     <DetailsBox>
@@ -28,15 +128,14 @@ const Profile = () => {
 
             <Container >
 
-
                 <AboutSec>
                     <AboutHead>
                         <h4>ABOUT ME</h4>
                         <button className='btn-style'>Edit</button>
                     </AboutHead>
 
-                    <textarea name="" id="" cols="30" rows="5"></textarea>
-                    <hr className='rulestyle' />
+                    <textarea name="" id="" cols="30" rows="5" placeholder='Add something about you.'      ></textarea>
+                    <div className='rulestyle' ></div>
                 </AboutSec>
 
                 <AboutSec>
@@ -46,102 +145,80 @@ const Profile = () => {
                     </AboutHead>
 
                     <textarea name="" id="" cols="30" rows="5"></textarea>
-                    <hr className='rulestyle' />
+                    <div className='rulestyle' ></div>
                 </AboutSec>
 
 
                 <AboutSec>
-                    <WebItem
-                    >
-
-                        <AboutHead>
-                            <h4>ON THE WEB</h4>
-                            <button className='btn-style'>Edit</button>
-                        </AboutHead>
-                    </WebItem>
+                    <AboutHead>
+                        <h4>ON THE WEB</h4>
+                        <button className='btn-style'>Edit</button>
+                    </AboutHead>
 
                     <WebFormSec>
                         <WebItem>
-                            <h3>Linked In</h3>
-                            <InpBox> <RxLinkedinLogo size={30} /><input type="text" /> </InpBox>
+                            <p>Linkedin</p>
+                            <InpBox> <RxLinkedinLogo className='icon-col' size={25} /><input type="text" className='inputStyle' /> </InpBox>
                         </WebItem>
 
                         <WebItem>
-                            <h3>Github</h3>
-                            <InpBox> <FaGithub size={30} /><input type="text" /> </InpBox>
+                            <p>Github</p>
+                            <InpBox> <FaGithub className='icon-col' size={25} /><input type="text" className='inputStyle' /> </InpBox>
                         </WebItem>
 
                         <WebItem>
-                            <h3>Facebook</h3>
-                            <InpBox> <BsFacebook size={30} /><input type="text" /> </InpBox>
+                            <p>Facebook</p>
+                            <InpBox> <BsFacebook className='icon-col' size={25} /><input type="text" className='inputStyle' /> </InpBox>
                         </WebItem>
 
                         <WebItem>
-                            <h3>Twitter</h3>
-                            <InpBox> <FaTwitter size={30} /><input type="text" /> </InpBox>
+                            <p>Twitter</p>
+                            <InpBox> <FaTwitter className='icon-col' size={25} /><input type="text" className='inputStyle' /> </InpBox>
                         </WebItem>
 
                         <WebItem>
-                            <h3>Instagram</h3>
-                            <InpBox> <AiFillInstagram size={30} /><input type="text" /> </InpBox>
+                            <p>Instagram</p>
+                            <InpBox> <AiFillInstagram className='icon-col' size={25} /><input type="text" className='inputStyle' /> </InpBox>
                         </WebItem>
 
                         <WebItem>
-                            <h3>Website</h3>
-                            <InpBox> <FiGlobe size={30} /><input type="text" /> </InpBox>
+                            <p>Website</p>
+                            <InpBox> <FiGlobe className='icon-col' size={25} /><input type="text" className='inputStyle' /> </InpBox>
                         </WebItem>
-
-
-
-
-
                     </WebFormSec>
 
-
-
-
-
                 </AboutSec>
+
 
                 <AboutSec>
-                    
+                    <AboutHead>
+                        <h4>PERSONAL INFORMATION</h4>
+                        <button className='btn-style'>Edit</button>
+                    </AboutHead>
+                    <WebOptions>
 
-                        <AboutHead>
-                            <h4>PERSONAL INFORMATION</h4>
-                            <button className='btn-style'>Edit</button>
-                        </AboutHead>
-                        <WebOptions>
+                        <WebItem>
+                            <p>Highest Education</p>
+                            <select name="" id="education">
+                                <option value="">Primary</option>
+                                <option value="">Secondary</option>
+                                <option value="">Higher Secondary</option>
+                                <option value="">Graduation</option>
+                                <option value="">Post Graduation</option>
+                            </select>
 
-                            <WebItem>
-                                <h3>Facebook</h3>
-                                <select name="" id="">
-                                    <option value="">hai</option>
-                                    <option value="">hai</option>
-                                    <option value="">hai</option>
-                                </select>
-
-                            </WebItem>
-                            <WebItem>
-                                <h3>Facebook</h3>
-
-                                <select name="" id="">
-                                    <option value="">hai</option>
-                                    <option value="">hai</option>
-                                    <option value="">hai</option>
-                                </select>
-                            </WebItem>
-
-                        </WebOptions>
-
-
-                   
-
+                        </WebItem>
+                        <WebItem>
+                            <p>What do you do currently?</p>
+                            <select name="occupation" id="occupation">
+                                <option value="college-student">College Student</option>
+                                <option value="teaching">Teaching</option>
+                                <option value="job">Job</option>
+                                <option value="freelancing">Freelancing</option>
+                            </select>
+                        </WebItem>
+                    </WebOptions>
                 </AboutSec>
-
-
-
-
-
 
 
                 <AboutSec>
@@ -151,14 +228,15 @@ const Profile = () => {
                     </AboutHead>
                     <p>Password</p>
                     <textarea name="" id="" cols="30" rows="1"></textarea>
-                    <hr className='rulestyle' />
+                    <div className='rulestyle' ></div>
                 </AboutSec>
+
+
                 <AboutSec>
                     <AboutHead>
                         <h4>INTRESTS</h4>
                         <button className='btn-style'>Edit</button>
                     </AboutHead>
-                     
                 </AboutSec>
 
 
@@ -174,130 +252,3 @@ const Profile = () => {
 
 export default Profile
 
-
-const Container = styled.div`
-background-color: #b4cce430;
-display: flex;
-// justify-content: center;
-// border:2px solid red;
-flex-direction:column;
-z-index:1;
-margin-top:100px;
-`
-const ProfileBox = styled.div`
-display:flex;
-align-items: center;
-// justify-content: center;
-padding:10px 50px;
-// border: 0.5px solid #767676d5;
-border-radius:5px;
-position:fixed;
-top:55.5px;
-background-color: white;
-z-index:3;
-min-width:100vw;
-`
-
-const LogoBox = styled.div`
- img{
-    height:50px;
-    width: 50px;
-    border:1px solid red;
-    border-radius:40px;
- } 
-flex:0.1;
-
-
-`
-const UserBox = styled.div`
-flex:1;
-display: flex;
-align-items: center;
-justify-content: space-between;
- 
-
-
-`
-const DetailsBox = styled.div`
-
-
-
-`
-const FollowersBox = styled.div`
- 
-
-
-`
-const AboutSec = styled.div`
- 
- display: flex;
-//  justify-content: center;
- flex-direction:column;
- padding :20px 50px;
- textarea{
-    margin:10px 10px;
-    padding:10px 10px;
-    border-radius:5px;
-    resize: none;  
-    font-size:18px;
-    outline: none; 
- }
-
-`
-const AboutHead = styled.div`
-display:flex;
-justify-content:space-between;  
-margin : 10px 10px;
-
-
-`
-const WebFormSec = styled.div`
-display:flex;
-flex-wrap:wrap;
-align-items: center;
-//   justify-content: center;
-
-`
-const InpBox = styled.div`
-display:flex;
-background-color:white;
-align-items: center;
-padding:0px 10px;
-margin:10px 0px;
-`
-
-const WebOptions = styled.div`
-display:flex;
-`
-
-const WebItem = styled.div`
-display:flex;
- flex-direction:column;
- min-width: 380px;
- margin: 5px 15px;
- padding : 5px 15px;
-//  justify-content: center;
- 
- input{
-   
-    font-size:18px;
-    height:30px;
-    border:none;
-    padding:5px 5px;
-    border-radius:5px;
- }
- input:focus {
-    outline: none;  
-
-  }
-
-  select,option{
-    font-size:18px;
-    height:30px;
-    border:none;
-    padding:5px 5px;
-    border-radius:5px;
-    margin:8px 5px;
-    min-width: 600px;
-  }
-`

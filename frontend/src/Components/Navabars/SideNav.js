@@ -16,41 +16,41 @@ const SideNav = () => {
             <Navbox>
 
                 <NavItem>
-                    <AiFillHome size={30} />
+                    <AiFillHome  className='bar-icon-col'size={25} />
                     <p>Home</p>
                 </NavItem>
                 <NavItem>
-                    <ImBooks size={30} />
+                    <ImBooks   className='bar-icon-col' size={25} />
                     <p>Courses</p>
                 </NavItem>
                 <NavItem>
-                    <AiFillCompass size={30} />
+                    <AiFillCompass   className='bar-icon-col' size={25} />
                     <p>Trending</p>
                 </NavItem>
                 <NavItem>
-                    <ImUserCheck size={30} />
+                    <ImUserCheck   className='bar-icon-col' size={25} />
                     <p>Following</p>
                 </NavItem>
                 <NavItem>
-                    <MdDashboard size={30} />
+                    <MdDashboard   className='bar-icon-col' size={25} />
                     <p>Dashboard</p>
                 </NavItem>
                 <NavItem>
-                    <BsDiscord size={30} />
+                    <BsDiscord  className='bar-icon-col' size={25} />
                     <p>Discord</p>
                 </NavItem>
                 <NavItem>
-                    <TbCircleLetterC size={30} />
+                    <TbCircleLetterC  className='bar-icon-col'  size={25} />
                     <p>Creator Access</p>
 
                 </NavItem>
                 <NavItem>
-                    <RiFeedbackFill size={30} />
+                    <RiFeedbackFill   className='bar-icon-col'size={25} />
                     <p>Feedback</p>
                 </NavItem>
 
                 <NavItem>
-                    <MdTour size={30} />
+                    <MdTour   className='bar-icon-col'size={30} />
                     <p>Tour</p>
                 </NavItem>
 
@@ -60,7 +60,7 @@ const SideNav = () => {
 
 
             <Logout>
-                <IoMdLogOut size={30} />
+                <IoMdLogOut size={25} />
                 <p>Logout</p>
             </Logout>
 
