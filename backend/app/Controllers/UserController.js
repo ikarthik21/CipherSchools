@@ -1,10 +1,8 @@
 import UserRegister from '../models/UserSchema.js';
-import bcrypt from "bcrypt";
+import { MongoClient } from 'mongodb';
 import passport from 'passport';
-
-
-
 import { v4 as uuidv4 } from 'uuid';
+import dotenv from 'dotenv'; dotenv.config();
 
 
 
@@ -13,6 +11,33 @@ import { v4 as uuidv4 } from 'uuid';
 const UserController = () => {
 
     return {
+
+
+        async getFollowers(req, res) {
+
+            const client = new MongoClient(process.env.MONGO_CONNECTION_URL);
+
+            try {
+
+                await client.connect();
+                const database = client.db('CipherScools');
+                const followersCollection = database.collection('Followers');
+
+
+                const followers = await followersCollection.find().toArray();
+
+
+                return res.status(200).json({ followers: followers });
+
+            } catch (err) {
+                console.error(err);
+            } finally {
+                 
+                await client.close();
+            }
+
+        },
+
 
         async adduser(req, res) {
 

@@ -10,6 +10,7 @@ import { GrClose } from 'react-icons/gr'
  
 import FormCont from '../FormBox/FormCont'
 import { AboutHead, AboutSec, BottomActionBar, Container, DetailsBox, EditOp, FollowersBox, FormBox, Imagebox, InpBox, LogoBox, ProfileBox, ProfileUpdate, UserBox, WebFormSec, WebItem, WebOptions } from '../Styles/Style'
+import Followers from './Followers';
 
 
 function EditProf({ onClose, children }) {
@@ -40,11 +41,15 @@ function EditProf({ onClose, children }) {
 const Profile = () => {
     const [file, setFile] = useState(null);
     const [showEditProf, setShowEditProf] = useState(false);
+    const [showFollowers,setshowFollowers]=useState(false);
 
     const handleButtonClick = () => {
         setShowEditProf(true);
     };
 
+const handlefollower=()=>{
+    setshowFollowers(!showFollowers);
+}
     const handleCloseModal = () => {
         setShowEditProf(false);
     };
@@ -119,7 +124,7 @@ const Profile = () => {
                         <p>karthikeyakallapu@gmail.com</p>
                     </DetailsBox>
                     <FollowersBox>
-                        <p>0 Followers</p>
+                        <button className='sp-btn' onClick={handlefollower}>12 Followers</button>
                     </FollowersBox>
                 </UserBox>
             </ProfileBox>
@@ -127,6 +132,8 @@ const Profile = () => {
 
 
             <Container >
+
+                {showFollowers ?<Followers/> : ""}
 
                 <AboutSec>
                     <AboutHead>
@@ -137,6 +144,11 @@ const Profile = () => {
                     <textarea name="" id="" cols="30" rows="5" placeholder='Add something about you.'      ></textarea>
                     <div className='rulestyle' ></div>
                 </AboutSec>
+
+
+
+
+
 
                 <AboutSec>
                     <AboutHead>

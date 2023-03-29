@@ -118,7 +118,14 @@
  }
 
 
-
+.sp-btn{
+  background-color: transparent;
+  border:none;
+  color: white;
+  font-size: 15px;
+  text-decoration: underline;
+ cursor: pointer;
+}
 
 
 

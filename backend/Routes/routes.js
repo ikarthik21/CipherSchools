@@ -4,40 +4,39 @@ import UserController from '../app/Controllers/UserController.js'
 
 router.get("/", (req, res) => {
 
-
-
-
      res.send("hello");
 
 })
 
 
-
-//Register a new user
-router.post('/adduser', UserController().adduser);
+router.get("/getfollowers", UserController().getFollowers);
 
 
-
-// Login User
-router.post('/login', UserController().signin);
-
-
-//Edit Profile Details
-router.post('/editUser', UserController().edit);
+// //Register a new user
+// router.post('/adduser', UserController().adduser);
 
 
-// Get user Details
-router.post('/getuser', UserController().getdetails);
+
+// // Login User
+// router.post('/login', UserController().signin);
 
 
-// Change password
-router.post('/changepass',  UserController().changepass);
+// //Edit Profile Details
+// router.post('/editUser', UserController().edit);
 
- 
-// Edit  User Intrests
 
-router.post('/editintrests',  UserController().editUserInrests);
+// // Get user Details
+// router.post('/getuser', UserController().getdetails);
 
- 
+
+// // Change password
+// router.post('/changepass',  UserController().changepass);
+
+
+// // Edit  User Intrests
+
+// router.post('/editintrests',  UserController().editUserInrests);
+
+
 
 export default router;
