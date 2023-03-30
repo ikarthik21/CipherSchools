@@ -1,121 +1,168 @@
- @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+.applyFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.applyFlexspec {
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+  margin-top: 60px;
+}
+
+.dummy {
+  background-color: #d3dcdf;
+  font-weight: lighter;
+  background-color: #7ec1c2;
+  background-color: #e9a95c;
+
+}
 
 
 
- * {
-   margin: 0;
-   padding: 0;
+.btn-style {
 
- }
+  padding: 6px 23px;
+  cursor: pointer;
+  background-color: #f3912e;
+  color: white;
+  border: none;
+  border-radius: 5px;
 
- .applyFlex {
-   display: flex;
-   align-items: center;
-   justify-content: center;
- }
+}
 
- .applyFlexspec {
-   display: flex;
-   flex-direction: column;
-   margin-left: 70px;
-   margin-top: 60px;
- }
+.btn-styleDark {
 
- .dummy {
-   background-color: #d3dcdf;
-   font-weight: lighter;
-   background-color: #0e2546;
+  padding: 6px 23px;
+  cursor: pointer;
+  background-color: #0f1e3a;
+  color: white;
+  border: none;
+  border-radius: 5px;
 
- }
+}
 
+.inputStyle {
+  font-size: 18px;
+  height: 30px;
+  width: 335px;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
 
+.inputStyle:focus {
+  outline: none;
+}
 
- .btn-style {
+.inputStyledark {
+  font-size: 18px;
+  height: 30px;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  background-color: #b4cce459;
+  width: 350px;
+}
 
-   padding: 6px 23px;
-   cursor: pointer;
-   background-color: #f3912e;
-   color: white;
-   border: none;
-   border-radius: 5px;
+.inputStyledark:focus {
+  outline: none;
+}
 
- }
+.rulestyle {
+  background: rgba(10, 30, 50, .1);
+  border-radius: 0.5px;
+  height: 1px;
+  margin: 1.5rem 0 1rem;
+  width: 100%;
+}
 
- .btn-styleDark {
+.icon-col {
+  color: #68788d;
+}
 
-   padding: 6px 23px;
-   cursor: pointer;
-   background-color: #0f1e3a;
-   color: white;
-   border: none;
-   border-radius: 5px;
+.bar-icon-col {
+  color: #26374e;
+}
 
- }
-
- .inputStyle {
-   font-size: 18px;
-   height: 30px;
-   border: none;
-   padding: 5px 5px;
-   border-radius: 5px;
- }
-
- .inputStyle:focus {
-   outline: none;
- }
-
- .inputStyledark {
-   font-size: 18px;
-   height: 30px;
-   border: none;
-   padding: 5px 5px;
-   border-radius: 5px;
-   background-color: #b4cce459;
-   width: 350px;
- }
-
- .inputStyledark:focus {
-   outline: none;
- }
-
- .rulestyle {
-   background: rgba(10, 30, 50, .1);
-   border-radius: 0.5px;
-   height: 1px;
-   margin: 1.5rem 0 1rem;
-   width: 100%;
- }
-
- .icon-col {
-   color: #68788d;
- }
-
- .bar-icon-col {
-   color: #26374e;
- }
-
- .formDivstyle {
-   position: fixed;
-   top: 0px;
-   left: 0px;
-   right: 0px;
-   bottom: 0px;
-   z-index: 10;
-   background-color: #00000080;
-   backdrop-filter: blur(5px);
-   display: flex;
-   justify-content: center;
-   align-items: center;
- 
-
- }
+.formDivstyle {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 10;
+  background-color: #00000080;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 
- .formInnerBoxstyle{
+}
+
+
+.formInnerBoxstyle {
   background-color: white;
   padding: 20px 20px;
   border-radius: 20px;
- }
+}
+
+
+
+
+
+
+
+
+
+body::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #282828;
+  border-radius: 25px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #282828;
+
+}
+
+.mainBtStyle {
+  background-color: #f3912e;
+  padding: 10px 19px;
+  border-radius: 3px;
+  color: whitesmoke;
+  transition: transform 0.5s;
+  cursor: pointer;
+  border: 3px solid #f3912e;
+  letter-spacing: 1px;
+
+}
+
+.sp-bt {
+  border: none;
+  margin: 15px 15px;
+  background-color: transparent;
+  color: #01458e;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+
+}
 
 
 .sp-btn{
@@ -129,19 +176,12 @@
 
 
 
+.selected {
+   background-color: #e9a95c;
+ color: white;
+}
 
-
-
- body::-webkit-scrollbar {
-   width: 0.45rem;
- }
-
- body::-webkit-scrollbar-thumb {
-   background-color: #282828;
-   border-radius: 25px;
- }
-
- body::-webkit-scrollbar-thumb:hover {
-   background-color: #282828;
-
- }
+.not-selected {
+ background-color: white;
+background-color:#7ec1c2;
+}

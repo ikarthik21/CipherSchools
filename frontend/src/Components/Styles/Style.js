@@ -175,3 +175,21 @@ float:right;
  }
 
 `
+
+
+
+export const FormContent = styled.div`
+ 
+flex-direction:column;
+padding:10px 20px;
+
+`
+export const FormItem = styled.div`
+display:flex;
+justify-content:center;
+flex-direction:column;
+p{
+    margin:10px 0px;
+}
+
+`

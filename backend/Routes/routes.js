@@ -11,6 +11,9 @@ router.get("/", (req, res) => {
 
 router.get("/getfollowers", UserController().getFollowers);
 
+router.post("/userdetails", UserController().getUserDetails);
+router.post("/editUser", UserController().edit);
+
 
 // //Register a new user
 // router.post('/adduser', UserController().adduser);

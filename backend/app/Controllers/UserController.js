@@ -13,6 +13,25 @@ const UserController = () => {
     return {
 
 
+        async getUserDetails(req, res) {
+
+            const { user_id } = req.body;
+
+            try {
+                const user = await UserRegister.findOne({ user_id: user_id });
+
+
+                return res.status(200).json(user);
+
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(400).send({ message: " <h3> Error in Finding the User </h3> 😓" });
+            }
+
+        },
+
+
         async getFollowers(req, res) {
 
             const client = new MongoClient(process.env.MONGO_CONNECTION_URL);
@@ -32,7 +51,7 @@ const UserController = () => {
             } catch (err) {
                 console.error(err);
             } finally {
-                 
+
                 await client.close();
             }
 
@@ -127,14 +146,19 @@ const UserController = () => {
 
         async edit(req, res) {
 
-            const { fname, lname, email, phone, about, linkedin, github, facebook, twitter, instagram, website, education, occupation } = req.body;
+            const user = req.body;
 
+
+            const email = user.email;
+            
+           
 
             const userPres = await UserRegister.find({ email: email });
 
 
             try {
-                await UserRegister.findOneAndUpdate({ _id: userPres[0]._id }, { fname, lname, email, phone, about, linkedin, github, facebook, twitter, education, occupation, instagram, website });
+                await UserRegister.findOneAndUpdate({ _id: userPres[0]._id }, {  fname :user.fname,  lname:user.lname,  email :
+                    user.email,  phone : user.phone , about :user.about, linkedin : user.linkedin, github : user.github,  facebook :user.facebook, twitter :user.twitter, education :user.education , occupation :user.occupation, instagram :user.instagram, website :user.website});
 
                 res.status(200).send({ message: "Edit Success 😊" });
 

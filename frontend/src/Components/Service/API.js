@@ -23,4 +23,31 @@ export const getFollowers = async () => {
     }
 
 }
- 
+
+export const getUserDetails = async () => {
+    const user_id = "CIPH-e32e8c3a-4e96-49b2-b883-29cbca75cea7";
+
+    try {
+
+        const users = await axios.post(`${curr_url}/userdetails`, { user_id });
+        return users.data;
+
+    } catch (err) {
+        console.log(err);
+    }
+
+}
+
+
+
+export const editUser = async (user) => {
+
+    try {
+        console.log(user);
+
+        return axios.post(`${curr_url}/editUser`, user);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
